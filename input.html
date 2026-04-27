@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserimento Risultati</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Input condiviso</p>
+          <h1>Inserisci i risultati dei giocatori</h1>
+          <p class="page-copy">
+            Compila fino a 6 card e invia tutti i movimenti in un solo colpo.
+          </p>
+        </div>
+        <nav class="page-nav">
+          <a class="button-secondary" href="index.html">Home</a>
+          <a class="button-secondary" href="leaderboard.html">Classifica live</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <form id="results-form" class="players-grid">
+          <article class="player-card">
+            <span class="card-badge">Giocatore 1</span>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Es. Marco" />
+            </label>
+            <label>
+              <span>Puntata</span>
+              <input type="number" name="stake" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato netto</span>
+              <input type="number" name="net" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 2</span>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Es. Giulia" />
+            </label>
+            <label>
+              <span>Puntata</span>
+              <input type="number" name="stake" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato netto</span>
+              <input type="number" name="net" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 3</span>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Es. Luca" />
+            </label>
+            <label>
+              <span>Puntata</span>
+              <input type="number" name="stake" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato netto</span>
+              <input type="number" name="net" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 4</span>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Es. Sara" />
+            </label>
+            <label>
+              <span>Puntata</span>
+              <input type="number" name="stake" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato netto</span>
+              <input type="number" name="net" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 5</span>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Es. Andrea" />
+            </label>
+            <label>
+              <span>Puntata</span>
+              <input type="number" name="stake" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato netto</span>
+              <input type="number" name="net" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 6</span>
+            <label>
+              <span>Nome</span>
+              <input type="text" name="name" placeholder="Es. Elena" />
+            </label>
+            <label>
+              <span>Puntata</span>
+              <input type="number" name="stake" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato netto</span>
+              <input type="number" name="net" step="0.01" placeholder="0" />
+            </label>
+          </article>
+        </form>
+
+        <div class="panel-actions">
+          <button id="submit-results" class="button-primary" type="button">
+            Invia risultati
+          </button>
+          <p id="form-status" class="status-text" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
