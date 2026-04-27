@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Casino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="shell shell-wide">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Casino Dashboard</p>
+          <h1>Seleziona un tavolo e monitora la classifica live</h1>
+          <p class="page-copy">
+            La room resta condivisa in tempo reale. Ogni gioco ha il suo spazio
+            dedicato con stato, chips e risultati.
+          </p>
+        </div>
+        <nav class="page-nav">
+          <a class="button-secondary" href="index.html">Home</a>
+          <a class="button-secondary" href="leaderboard.html">Classifica completa</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <div class="game-toolbar">
+          <div class="game-meta">
+            <div>
+              <span class="mini-label">Stanza corrente</span>
+              <strong id="current-room-code" class="game-id">In caricamento...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Stato room</span>
+              <strong id="room-state" class="state-badge" data-state="active">In attesa...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Giocatori</span>
+              <strong id="room-players-list" class="game-id">In caricamento...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Gioco attivo</span>
+              <strong id="room-active-game" class="game-id">Nessuno</strong>
+            </div>
+          </div>
+
+          <div class="toolbar-actions">
+            <button id="create-room-again" class="button-secondary" type="button">
+              Crea Nuova Room
+            </button>
+            <button id="end-room" class="button-warning" type="button">Termina Room</button>
+            <button id="reset-room" class="button-primary" type="button">Reset Room</button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="dashboard-main">
+            <div class="panel-heading">
+              <div>
+                <span class="mini-label">Tavoli disponibili</span>
+                <h2 class="section-title">Scegli il gioco</h2>
+              </div>
+            </div>
+
+            <div id="game-menu" class="game-menu-grid">
+              <a class="game-menu-card" href="poker.html" data-game-link="poker">
+                <span class="card-badge">Chips game</span>
+                <h3>Poker</h3>
+                <p>Buy-in, chips automatiche e settlement finale.</p>
+                <strong id="game-status-poker" class="menu-status">Pronto</strong>
+              </a>
+
+              <a class="game-menu-card" href="blackjack.html" data-game-link="blackjack">
+                <span class="card-badge">Chips game</span>
+                <h3>Blackjack</h3>
+                <p>Gestione fiches live con classifica della room sempre visibile.</p>
+                <strong id="game-status-blackjack" class="menu-status">Pronto</strong>
+              </a>
+
+              <a class="game-menu-card" href="roulette.html" data-game-link="roulette">
+                <span class="card-badge">Direct result</span>
+                <h3>Roulette</h3>
+                <p>Importi bloccati e risultati finali in euro senza chips.</p>
+                <strong id="game-status-roulette" class="menu-status">Pronto</strong>
+              </a>
+
+              <a class="game-menu-card" href="horse_racing.html" data-game-link="horse_racing">
+                <span class="card-badge">Direct result</span>
+                <h3>Horse Racing</h3>
+                <p>Round rapidi con puntata e chiusura manuale del tavolo.</p>
+                <strong id="game-status-horse_racing" class="menu-status">Pronto</strong>
+              </a>
+            </div>
+
+            <div class="panel-heading dashboard-heading">
+              <div>
+                <span class="mini-label">Classifica principale</span>
+                <h2 class="section-title">Saldo live della room</h2>
+              </div>
+            </div>
+
+            <div id="dashboard-leaderboard" class="leaderboard-list">
+              <div class="empty-state">
+                <h2>In attesa dei dati</h2>
+                <p>La classifica globale apparirà qui appena la room è sincronizzata.</p>
+              </div>
+            </div>
+          </section>
+
+          <aside class="dashboard-side">
+            <section class="side-card">
+              <div class="panel-heading">
+                <div>
+                  <span class="mini-label">Top 3 per gioco</span>
+                  <h2 class="section-title">Mini classifiche</h2>
+                </div>
+              </div>
+
+              <div id="mini-leaderboards" class="mini-boards">
+                <div class="mini-board" data-mini-board="poker"></div>
+                <div class="mini-board" data-mini-board="blackjack"></div>
+                <div class="mini-board" data-mini-board="roulette"></div>
+                <div class="mini-board" data-mini-board="horse_racing"></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+
+        <p id="dashboard-status" class="status-text" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

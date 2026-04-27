@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classifica Live</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Realtime leaderboard</p>
+          <h1>Classifica live della serata</h1>
+          <p class="page-copy">
+            I saldi si aggiornano automaticamente ogni volta che arriva un nuovo
+            movimento nel database condiviso.
+          </p>
+        </div>
+        <nav class="page-nav">
+          <a class="button-secondary" href="index.html">Home</a>
+          <a class="button-secondary" href="input.html">Inserimento dati</a>
+        </nav>
+      </header>
+
+      <section class="panel leaderboard-panel">
+        <div class="leaderboard-head">
+          <div>
+            <span class="mini-label">Stato connessione</span>
+            <strong id="live-indicator" class="live-indicator">In attesa...</strong>
+          </div>
+          <div>
+            <span class="mini-label">Giocatori in classifica</span>
+            <strong id="movement-count">0</strong>
+          </div>
+        </div>
+
+        <div class="game-toolbar compact">
+          <div class="game-meta">
+            <div>
+              <span class="mini-label">Stanza corrente</span>
+              <strong id="leaderboard-game-id" class="game-id">In caricamento...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Stato partita</span>
+              <strong
+                id="leaderboard-game-state"
+                class="state-badge"
+                data-state="active"
+              >
+                In attesa...
+              </strong>
+            </div>
+            <div>
+              <span class="mini-label">Giocatori stanza</span>
+              <strong id="leaderboard-players-list" class="game-id">In caricamento...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Tavoli attivi</span>
+              <strong id="leaderboard-active-games" class="game-id">In caricamento...</strong>
+            </div>
+          </div>
+        </div>
+
+        <div id="leaderboard-list" class="leaderboard-list">
+          <div class="empty-state">
+            <h2>Nessun dato disponibile</h2>
+            <p>Apri la pagina input e invia i primi risultati per vedere la classifica.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

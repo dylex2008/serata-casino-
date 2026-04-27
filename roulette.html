@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roulette Room</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-game-page="roulette">
+    <main class="shell shell-wide">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Game Page</p>
+          <h1>Roulette</h1>
+          <p class="page-copy">
+            Tavolo diretto: blocca i fondi, registra il risultato finale e aggiorna la room live.
+          </p>
+        </div>
+        <nav class="page-nav">
+          <a class="button-secondary" href="input.html">Menu giochi</a>
+          <a class="button-secondary" href="leaderboard.html">Classifica completa</a>
+        </nav>
+      </header>
+
+      <section class="panel game-page-shell">
+        <div class="game-toolbar">
+          <div class="game-meta">
+            <div><span class="mini-label">Stanza corrente</span><strong id="game-room-code" class="game-id">In caricamento...</strong></div>
+            <div><span class="mini-label">Stato tavolo</span><strong id="game-room-state" class="state-badge" data-state="idle">In attesa...</strong></div>
+            <div><span class="mini-label">Giocatori room</span><strong id="game-room-players" class="game-id">In caricamento...</strong></div>
+          </div>
+        </div>
+
+        <div class="game-page-grid">
+          <section class="game-stage">
+            <div class="casino-grid single">
+              <section class="casino-panel">
+                <div class="panel-heading">
+                  <div><span class="mini-label">Setup tavolo</span><h2 class="section-title">Puntate e risultati</h2></div>
+                  <strong id="game-selected-status" class="state-badge" data-state="idle">Pronto</strong>
+                </div>
+                <div class="stats-strip">
+                  <div class="stat-card"><span class="mini-label">Giocatori al tavolo</span><strong id="game-selected-players">0</strong></div>
+                  <div class="stat-card"><span class="mini-label">Fondi locked</span><strong id="game-selected-locked">€0,00</strong></div>
+                  <div class="stat-card"><span class="mini-label">Modalità</span><strong id="game-selected-rate">Risultato diretto</strong></div>
+                </div>
+              </section>
+            </div>
+
+            <form id="game-form" class="players-grid players-grid-2">
+              <article class="player-card">
+                <span class="card-badge">Bet 1</span>
+                <label><span>Giocatore</span><select name="player"><option value="">Seleziona giocatore</option></select></label>
+                <label><span>Investimento euro</span><input type="number" name="investment" step="0.01" placeholder="0" /></label>
+                <label><span>Risultato finale euro</span><input type="number" name="final" step="0.01" placeholder="0" /></label>
+              </article>
+              <article class="player-card">
+                <span class="card-badge">Bet 2</span>
+                <label><span>Giocatore</span><select name="player"><option value="">Seleziona giocatore</option></select></label>
+                <label><span>Investimento euro</span><input type="number" name="investment" step="0.01" placeholder="0" /></label>
+                <label><span>Risultato finale euro</span><input type="number" name="final" step="0.01" placeholder="0" /></label>
+              </article>
+              <article class="player-card">
+                <span class="card-badge">Bet 3</span>
+                <label><span>Giocatore</span><select name="player"><option value="">Seleziona giocatore</option></select></label>
+                <label><span>Investimento euro</span><input type="number" name="investment" step="0.01" placeholder="0" /></label>
+                <label><span>Risultato finale euro</span><input type="number" name="final" step="0.01" placeholder="0" /></label>
+              </article>
+              <article class="player-card">
+                <span class="card-badge">Bet 4</span>
+                <label><span>Giocatore</span><select name="player"><option value="">Seleziona giocatore</option></select></label>
+                <label><span>Investimento euro</span><input type="number" name="investment" step="0.01" placeholder="0" /></label>
+                <label><span>Risultato finale euro</span><input type="number" name="final" step="0.01" placeholder="0" /></label>
+              </article>
+            </form>
+
+            <div class="panel-actions">
+              <div class="toolbar-actions">
+                <button id="start-subgame" class="button-primary" type="button">START GAME</button>
+                <button id="finish-subgame" class="button-warning" type="button">END GAME</button>
+              </div>
+              <p id="game-status-text" class="status-text" aria-live="polite"></p>
+            </div>
+          </section>
+
+          <aside class="game-sidebar">
+            <section class="side-card">
+              <div class="panel-heading">
+                <div><span class="mini-label">Classifica live</span><h2 class="section-title">Saldo room</h2></div>
+              </div>
+              <div id="game-side-leaderboard" class="leaderboard-list compact-list"></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
