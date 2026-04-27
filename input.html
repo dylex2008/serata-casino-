@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserimento Risultati</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Input condiviso</p>
+          <h1>Inserisci i risultati dei giocatori</h1>
+          <p class="page-copy">
+            Compila fino a 6 card e invia tutti i movimenti in un solo colpo.
+          </p>
+        </div>
+        <nav class="page-nav">
+          <a class="button-secondary" href="index.html">Home</a>
+          <a class="button-secondary" href="leaderboard.html">Classifica live</a>
+        </nav>
+      </header>
+
+      <section class="panel">
+        <div class="game-toolbar">
+          <div class="game-meta">
+            <div>
+              <span class="mini-label">Stanza corrente</span>
+              <strong id="current-game-id" class="game-id">In caricamento...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Stato partita</span>
+              <strong id="game-state" class="state-badge" data-state="active">In attesa...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Giocatori stanza</span>
+              <strong id="room-players-list" class="game-id">In caricamento...</strong>
+            </div>
+          </div>
+
+          <div class="toolbar-actions">
+            <button id="create-game" class="button-secondary" type="button">Crea Partita</button>
+            <button id="end-game" class="button-warning" type="button">Termina Partita</button>
+            <button id="reset-game" class="button-primary" type="button">Nuova Partita</button>
+          </div>
+        </div>
+
+        <div class="casino-grid">
+          <section class="casino-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="mini-label">Selezione gioco</span>
+                <h2 class="section-title">Sottogiochi della room</h2>
+              </div>
+            </div>
+
+            <div class="game-selector">
+              <button class="game-tile" data-select-game="poker" type="button">Poker</button>
+              <button class="game-tile" data-select-game="blackjack" type="button">Blackjack</button>
+              <button class="game-tile" data-select-game="roulette" type="button">Roulette</button>
+              <button class="game-tile" data-select-game="horse_racing" type="button">
+                Horse Racing
+              </button>
+            </div>
+          </section>
+
+          <section class="casino-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="mini-label">Tavolo attivo</span>
+                <h2 id="selected-game-name" class="section-title">Poker</h2>
+              </div>
+              <strong id="selected-game-status" class="state-badge" data-state="idle">Pronto</strong>
+            </div>
+
+            <div class="stats-strip">
+              <div class="stat-card">
+                <span class="mini-label">Giocatori al tavolo</span>
+                <strong id="selected-game-players">0</strong>
+              </div>
+              <div class="stat-card">
+                <span class="mini-label">Fondi bloccati</span>
+                <strong id="selected-game-locked">€0,00</strong>
+              </div>
+              <div class="stat-card">
+                <span class="mini-label">Cambio chips</span>
+                <strong id="selected-game-rate">10 chips / €1</strong>
+              </div>
+            </div>
+
+            <label class="inline-field">
+              <span>Chips per euro</span>
+              <input id="chips-rate" type="number" min="1" step="1" value="10" />
+            </label>
+          </section>
+        </div>
+
+        <form id="results-form" class="players-grid">
+          <article class="player-card">
+            <span class="card-badge">Giocatore 1</span>
+            <label>
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
+            </label>
+            <label>
+              <span>Investimento euro</span>
+              <input type="number" name="investment" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Chips attuali</span>
+              <input type="number" name="chips" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato finale euro</span>
+              <input type="number" name="final" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 2</span>
+            <label>
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
+            </label>
+            <label>
+              <span>Investimento euro</span>
+              <input type="number" name="investment" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Chips attuali</span>
+              <input type="number" name="chips" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato finale euro</span>
+              <input type="number" name="final" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 3</span>
+            <label>
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
+            </label>
+            <label>
+              <span>Investimento euro</span>
+              <input type="number" name="investment" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Chips attuali</span>
+              <input type="number" name="chips" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato finale euro</span>
+              <input type="number" name="final" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 4</span>
+            <label>
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
+            </label>
+            <label>
+              <span>Investimento euro</span>
+              <input type="number" name="investment" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Chips attuali</span>
+              <input type="number" name="chips" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato finale euro</span>
+              <input type="number" name="final" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 5</span>
+            <label>
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
+            </label>
+            <label>
+              <span>Investimento euro</span>
+              <input type="number" name="investment" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Chips attuali</span>
+              <input type="number" name="chips" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato finale euro</span>
+              <input type="number" name="final" step="0.01" placeholder="0" />
+            </label>
+          </article>
+
+          <article class="player-card">
+            <span class="card-badge">Giocatore 6</span>
+            <label>
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
+            </label>
+            <label>
+              <span>Investimento euro</span>
+              <input type="number" name="investment" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              <span>Chips attuali</span>
+              <input type="number" name="chips" step="1" placeholder="0" />
+            </label>
+            <label>
+              <span>Risultato finale euro</span>
+              <input type="number" name="final" step="0.01" placeholder="0" />
+            </label>
+          </article>
+        </form>
+
+        <div class="panel-actions">
+          <div class="toolbar-actions">
+            <button id="start-subgame" class="button-primary" type="button">START GAME</button>
+            <button id="update-chips" class="button-secondary" type="button">
+              Aggiorna Chips
+            </button>
+            <button id="finish-subgame" class="button-warning" type="button">END GAME</button>
+          </div>
+          <p class="helper-copy">
+            START GAME blocca fondi e converte euro in chips. END GAME applica il settlement
+            finale e libera il saldo bloccato.
+          </p>
+          <p id="form-status" class="status-text" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
