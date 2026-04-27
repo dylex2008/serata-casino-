@@ -205,6 +205,86 @@ h1 {
   padding: 24px;
 }
 
+.casino-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.casino-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(230, 242, 233, 0.9));
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(45, 143, 87, 0.08);
+  padding: 18px;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  margin: 10px 0 0;
+  font-size: 1.3rem;
+}
+
+.game-selector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.game-tile {
+  border: 1px solid rgba(25, 49, 39, 0.1);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.game-tile[data-active="true"] {
+  background: linear-gradient(135deg, rgba(56, 161, 105, 0.18), rgba(31, 106, 64, 0.12));
+  border-color: rgba(45, 143, 87, 0.38);
+  color: var(--green-dark);
+}
+
+.game-tile:hover {
+  transform: translateY(-2px);
+}
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid rgba(25, 49, 39, 0.08);
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.inline-field {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
 .game-toolbar {
   display: flex;
   justify-content: space-between;
@@ -253,6 +333,11 @@ h1 {
 .state-badge[data-state="ended"] {
   color: #9b4e2c;
   background: rgba(255, 181, 95, 0.18);
+}
+
+.state-badge[data-state="idle"] {
+  color: #5b6c63;
+  background: rgba(186, 199, 192, 0.22);
 }
 
 .players-grid {
@@ -313,6 +398,12 @@ textarea:focus {
 .status-text {
   margin: 0;
   min-height: 24px;
+}
+
+.helper-copy {
+  margin: 0;
+  color: var(--muted);
+  max-width: 420px;
 }
 
 .leaderboard-panel {
@@ -407,6 +498,30 @@ textarea:focus {
   color: var(--muted);
 }
 
+.finance-stack {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.finance-chip {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.finance-chip.locked {
+  background: rgba(255, 181, 95, 0.18);
+  color: #9b4e2c;
+}
+
+.finance-chip.available {
+  background: rgba(71, 190, 114, 0.16);
+  color: var(--green-dark);
+}
+
 .saldo {
   font-size: 1.4rem;
   font-weight: 800;
@@ -447,6 +562,8 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .casino-grid,
+  .stats-strip,
   .players-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -476,11 +593,22 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .casino-grid,
+  .stats-strip,
+  .game-selector {
+    grid-template-columns: 1fr;
+  }
+
   .leaderboard-content {
     grid-template-columns: 56px 1fr;
   }
 
   .saldo {
+    grid-column: 2;
+  }
+
+  .finance-stack {
+    justify-items: start;
     grid-column: 2;
   }
 }
