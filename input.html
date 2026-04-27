@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Selection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="minimal-header">
+        <a class="button-secondary" href="index.html">Home</a>
+        <div class="room-inline">
+          <strong id="current-room-code" class="room-code-inline">...</strong>
+          <strong id="room-state" class="state-badge" data-state="idle">...</strong>
+        </div>
+        <a class="button-secondary" href="leaderboard.html">Rankings</a>
+      </header>
+
+      <section class="games-only">
+        <a class="game-choice" href="poker.html" data-game-link="poker">
+          <span id="game-status-poker" class="game-choice-status">Poker</span>
+        </a>
+        <a class="game-choice" href="blackjack.html" data-game-link="blackjack">
+          <span id="game-status-blackjack" class="game-choice-status">Blackjack</span>
+        </a>
+        <a class="game-choice" href="roulette.html" data-game-link="roulette">
+          <span id="game-status-roulette" class="game-choice-status">Roulette</span>
+        </a>
+        <a class="game-choice" href="horse_racing.html" data-game-link="horse_racing">
+          <span id="game-status-horse_racing" class="game-choice-status">Horse Racing</span>
+        </a>
+      </section>
+
+      <p id="dashboard-status" class="status-text center-text" aria-live="polite"></p>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
