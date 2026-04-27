@@ -9,17 +9,19 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "INSERISCI_API_KEY",
-  authDomain: "INSERISCI_AUTH_DOMAIN",
-  databaseURL: "INSERISCI_DATABASE_URL",
-  projectId: "INSERISCI_PROJECT_ID",
-  storageBucket: "INSERISCI_STORAGE_BUCKET",
-  messagingSenderId: "INSERISCI_MESSAGING_SENDER_ID",
-  appId: "INSERISCI_APP_ID",
+  apiKey: "AIzaSyAjkMFxgofR9_XTRLb92BiRJWo9NMinbbw",
+  authDomain: "serata-casino.firebaseapp.com",
+  databaseURL: "https://serata-casino-default-rtdb.firebaseio.com",
+  projectId: "serata-casino",
+  storageBucket: "serata-casino.firebasestorage.app",
+  messagingSenderId: "1003841692597",
+  appId: "1:1003841692597:web:b2a29461a423f281ebaffc",
+  measurementId: "G-6ZZSTW92CY"
 };
 
 const STORAGE_KEY = "live-ranking-current-room";
 
+// Questo controllo ora passerà perché abbiamo i dati veri
 const hasPlaceholderConfig = Object.values(firebaseConfig).some((value) =>
   String(value).startsWith("INSERISCI_")
 );
@@ -38,7 +40,6 @@ function ensureDatabase() {
       "Config Firebase mancante. Apri firebase.js e incolla i dati del tuo progetto."
     );
   }
-
   return db;
 }
 
@@ -94,7 +95,6 @@ export async function getRoom(roomCode) {
   if (!normalizedRoomCode) {
     return null;
   }
-
   const database = ensureDatabase();
   const snapshot = await get(ref(database, `rooms/${normalizedRoomCode}`));
   return snapshot.exists() ? snapshot.val() : null;
@@ -103,27 +103,22 @@ export async function getRoom(roomCode) {
 export async function createRoom(playersList = []) {
   const database = ensureDatabase();
   const normalizedPlayersList = normalizePlayersList(playersList);
-
   let roomCode = "";
   let existingRoom = true;
-
   while (existingRoom) {
     roomCode = buildRoomCode();
     existingRoom = await getRoom(roomCode);
   }
-
   const players = normalizedPlayersList.reduce((accumulator, playerName) => {
     accumulator[playerName] = 0;
     return accumulator;
   }, {});
-
   await set(ref(database, `rooms/${roomCode}`), {
     createdAt: Date.now(),
     status: "active",
     playersList: normalizedPlayersList,
     players,
   });
-
   await setCurrentRoom(roomCode);
   return roomCode;
 }
@@ -131,11 +126,9 @@ export async function createRoom(playersList = []) {
 export async function joinRoom(roomCode) {
   const normalizedRoomCode = normalizeRoomCode(roomCode);
   const room = await getRoom(normalizedRoomCode);
-
   if (!room) {
     throw new Error("Codice stanza non trovato.");
   }
-
   await setCurrentRoom(normalizedRoomCode);
   return { roomCode: normalizedRoomCode, room };
 }
@@ -145,7 +138,6 @@ export async function endRoom(roomCode) {
   if (!normalizedRoomCode) {
     throw new Error("Nessuna stanza corrente da terminare.");
   }
-
   const database = ensureDatabase();
   await update(ref(database, `rooms/${normalizedRoomCode}`), {
     status: "ended",
@@ -164,7 +156,6 @@ export async function resolveCurrentRoom() {
       return storedRoom;
     }
   }
-
   const firebaseRoom = normalizeRoomCode(await getCurrentRoom());
   if (firebaseRoom) {
     const room = await getRoom(firebaseRoom);
@@ -173,40 +164,31 @@ export async function resolveCurrentRoom() {
       return firebaseRoom;
     }
   }
-
   return null;
 }
 
 export async function updatePlayer(roomCode, playerName, scoreDelta) {
   const normalizedRoomCode = normalizeRoomCode(roomCode);
   const normalizedPlayerName = String(playerName || "").trim();
-
   if (!normalizedRoomCode) {
     throw new Error("Stanza corrente non trovata.");
   }
-
   if (!normalizedPlayerName) {
     throw new Error("Giocatore non valido.");
   }
-
   const database = ensureDatabase();
   const room = await getRoom(normalizedRoomCode);
-
   if (!room) {
     throw new Error("La stanza selezionata non esiste.");
   }
-
   if (room.status === "ended") {
     throw new Error("La partita è terminata. Crea una nuova stanza per continuare.");
   }
-
   if (!Array.isArray(room.playersList) || !room.playersList.includes(normalizedPlayerName)) {
     throw new Error("Il giocatore selezionato non appartiene a questa stanza.");
   }
-
   const currentScore = Number(room.players?.[normalizedPlayerName] || 0);
   const nextScore = currentScore + Number(scoreDelta || 0);
-
   await update(ref(database, `rooms/${normalizedRoomCode}/players`), {
     [normalizedPlayerName]: nextScore,
   });
@@ -228,12 +210,10 @@ export function subscribeToCurrentRoom(callback, errorCallback) {
 export function listenRoom(roomCode, callback, errorCallback) {
   const normalizedRoomCode = normalizeRoomCode(roomCode);
   const database = ensureDatabase();
-
   if (!normalizedRoomCode) {
     callback(null);
     return () => {};
   }
-
   return onValue(
     ref(database, `rooms/${normalizedRoomCode}`),
     (snapshot) => callback(snapshot.exists() ? snapshot.val() : null),
