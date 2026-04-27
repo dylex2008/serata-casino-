@@ -29,12 +29,37 @@
       </header>
 
       <section class="panel">
+        <div class="game-toolbar">
+          <div class="game-meta">
+            <div>
+              <span class="mini-label">Stanza corrente</span>
+              <strong id="current-game-id" class="game-id">In caricamento...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Stato partita</span>
+              <strong id="game-state" class="state-badge" data-state="active">In attesa...</strong>
+            </div>
+            <div>
+              <span class="mini-label">Giocatori stanza</span>
+              <strong id="room-players-list" class="game-id">In caricamento...</strong>
+            </div>
+          </div>
+
+          <div class="toolbar-actions">
+            <button id="create-game" class="button-secondary" type="button">Crea Partita</button>
+            <button id="end-game" class="button-warning" type="button">Termina Partita</button>
+            <button id="reset-game" class="button-primary" type="button">Nuova Partita</button>
+          </div>
+        </div>
+
         <form id="results-form" class="players-grid">
           <article class="player-card">
             <span class="card-badge">Giocatore 1</span>
             <label>
-              <span>Nome</span>
-              <input type="text" name="name" placeholder="Es. Marco" />
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
             </label>
             <label>
               <span>Puntata</span>
@@ -49,8 +74,10 @@
           <article class="player-card">
             <span class="card-badge">Giocatore 2</span>
             <label>
-              <span>Nome</span>
-              <input type="text" name="name" placeholder="Es. Giulia" />
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
             </label>
             <label>
               <span>Puntata</span>
@@ -65,8 +92,10 @@
           <article class="player-card">
             <span class="card-badge">Giocatore 3</span>
             <label>
-              <span>Nome</span>
-              <input type="text" name="name" placeholder="Es. Luca" />
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
             </label>
             <label>
               <span>Puntata</span>
@@ -81,8 +110,10 @@
           <article class="player-card">
             <span class="card-badge">Giocatore 4</span>
             <label>
-              <span>Nome</span>
-              <input type="text" name="name" placeholder="Es. Sara" />
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
             </label>
             <label>
               <span>Puntata</span>
@@ -97,8 +128,10 @@
           <article class="player-card">
             <span class="card-badge">Giocatore 5</span>
             <label>
-              <span>Nome</span>
-              <input type="text" name="name" placeholder="Es. Andrea" />
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
             </label>
             <label>
               <span>Puntata</span>
@@ -113,8 +146,10 @@
           <article class="player-card">
             <span class="card-badge">Giocatore 6</span>
             <label>
-              <span>Nome</span>
-              <input type="text" name="name" placeholder="Es. Elena" />
+              <span>Giocatore</span>
+              <select name="player">
+                <option value="">Seleziona giocatore</option>
+              </select>
             </label>
             <label>
               <span>Puntata</span>

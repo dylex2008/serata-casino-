@@ -14,19 +14,59 @@
   </head>
   <body class="home-page">
     <main class="shell home-shell">
-      <section class="hero-card">
-        <p class="eyebrow">Serata Casino</p>
-        <h1>Classifica live condivisa in tempo reale</h1>
-        <p class="hero-copy">
-          Inserisci i risultati da una schermata e guarda la leaderboard aggiornarsi
-          all'istante su tutti i dispositivi collegati.
-        </p>
+      <section class="hero-card hero-card-wide">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Serata Casino</p>
+            <h1>Multiplayer live con codice stanza</h1>
+            <p class="hero-copy">
+              Crea una partita con la tua lista giocatori oppure entra in una room
+              esistente e segui la classifica live sincronizzata in tempo reale.
+            </p>
+          </div>
 
-        <div class="home-actions">
-          <a class="button-primary" href="input.html">Apri input risultati</a>
-          <a class="button-secondary" href="leaderboard.html">Apri classifica live</a>
+          <div class="menu-panels">
+            <section class="menu-card">
+              <p class="eyebrow">Crea Partita</p>
+              <h2>Nuova stanza</h2>
+              <form id="create-room-form" class="menu-form">
+                <label>
+                  <span>Giocatori separati da virgola</span>
+                  <textarea
+                    id="players-list"
+                    rows="4"
+                    placeholder="Marco, Giulia, Luca, Sara"
+                  ></textarea>
+                </label>
+                <button class="button-primary" type="submit">Crea Partita</button>
+                <p id="create-room-status" class="status-text" aria-live="polite"></p>
+                <p class="room-preview">
+                  Codice stanza: <strong id="created-room-code">-</strong>
+                </p>
+              </form>
+            </section>
+
+            <section class="menu-card">
+              <p class="eyebrow">Entra In Partita</p>
+              <h2>Accedi a una room</h2>
+              <form id="join-room-form" class="menu-form">
+                <label>
+                  <span>Codice stanza</span>
+                  <input
+                    id="room-code-input"
+                    type="text"
+                    maxlength="8"
+                    placeholder="Es. A1B2C3"
+                  />
+                </label>
+                <button class="button-secondary" type="submit">Entra In Partita</button>
+                <p id="join-room-status" class="status-text" aria-live="polite"></p>
+              </form>
+            </section>
+          </div>
         </div>
       </section>
     </main>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
